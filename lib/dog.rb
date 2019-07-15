@@ -61,9 +61,6 @@ class Dog
     else
       dog = Dog.new(name: name, breed: breed)
       dog.save
-
-
-
   end
 
 end
