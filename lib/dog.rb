@@ -13,8 +13,9 @@ class Dog
       CREATE TABBLE IF NOT EXISTS dogs(
         id INTEGER PRIMARY KEY,
         name TEXT,
-        breed TEXT
-      ); SQL
+        breed TEXT); 
+      SQL
+
     db[:conn].execute(sql)
   end
 
