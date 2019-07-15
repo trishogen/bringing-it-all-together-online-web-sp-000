@@ -32,7 +32,8 @@ class Dog
     DB[:conn].execute(sql, self.name, self.breed)
 
     row = DB[:conn].execute("select last_insert_rowid() from dogs")[0]
-    Dog.new(id: row[0], name: row[1], breed: row[2])
+    self.id = row[0]
+    self
   end
 
   def self.create(dog_attributes)
@@ -49,6 +50,20 @@ class Dog
   def self.find_by_id(id)
     row = DB[:conn].execute("select * from dogs where id = ?", id)[0]
     Dog.new(id: row[0], name: row[1], breed: row[2])
+  end
+
+  def self.find_or_create_by(name:, :breed)
+    sql = "select * from dogs where name = ? AND breed = ?"
+    row = DB[:conn].execute(sql, name, breed)[0]
+    if !row.empty
+      dog = Dog.new_from_db(row)
+      dog.save
+    else
+      dog = Dog.new(name: name, breed: breed)
+      dog.save
+      
+      
+
   end
 
 end
