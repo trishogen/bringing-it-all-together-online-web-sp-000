@@ -39,8 +39,6 @@ class Dog
     dog = Dog.new
     dog_attributes.each {|key, value| dog.send(("#{key}="), value)}
     dog.save
-    end
-
   end
 
 end
