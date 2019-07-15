@@ -57,11 +57,11 @@ class Dog
     row = DB[:conn].execute(sql, name, breed)[0]
     if !row.empty?
       dog = Dog.new_from_db(row)
-      dog.save
     else
       dog = Dog.new(name: name, breed: breed)
       dog.save
     end
+    dog
   end
 
 end
