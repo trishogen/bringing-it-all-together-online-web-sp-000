@@ -35,4 +35,12 @@ class Dog
     Dog.new(id: row[0], name: row[1], breed: row[2])
   end
 
+  def self.create(dog_attributes)
+    dog = Dog.new
+    dog_attributes.each {|key, value| dog.send(("#{key}="), value)}
+    dog.save
+    end
+
+  end
+
 end
