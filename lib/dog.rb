@@ -31,7 +31,7 @@ class Dog
 
     DB[:conn].execute(sql, self.name, self.breed)
 
-    row = DB[:conn].execute("select last_row_inserted() from dogs")[0]
+    row = DB[:conn].execute("select last_insert_rowid() from dogs")[0]
     Dog.new(id: row[0], name: row[1], breed: row[2])
   end
 
