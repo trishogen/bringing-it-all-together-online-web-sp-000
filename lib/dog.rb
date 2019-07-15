@@ -68,7 +68,7 @@ class Dog
   def self.find_by_name(name:)
     sql = "select * from dogs where name = ?"
     row = DB[:conn].execute(sql, name)[0]
-    self.new_from_db(row)
+    Dog.new_from_db(row)
   end
 
 end
