@@ -54,9 +54,10 @@ class Dog
 
   def self.find_or_create_by(name:, breed:)
     sql = "select * from dogs where name = ? AND breed = ?"
-    row = DB[:conn].execute(sql, name, breed)[0]
+    row = DB[:conn].execute(sql, name, breed)
     if !row.empty?
-      dog = Dog.new_from_db(row)
+      dog_data = row[0]
+      dog = Dog.new_from_db(dog_data)
     else
       dog = Dog.new(name: name, breed: breed)
       dog.save
