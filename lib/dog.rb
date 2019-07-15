@@ -69,6 +69,7 @@ class Dog
     sql = "select * from dogs where name = ?"
     row = DB[:conn].execute(sql, name)[0]
     Dog.new_from_db(row)
+    binding.pry
   end
 
 end
