@@ -36,8 +36,8 @@ class Dog
   end
 
   def self.create(dog_attributes)
-    dog = nil
-    dog_attributes.each {|key, value| dog = Dog.new.send(("#{key}="), value)}
+    dog = Dog.new
+    dog_attributes.each {|key, value| dog.send(("#{key}="), value)}
     dog.save
     dog
   end
